@@ -3,46 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>大学杯 - Splatoon Tournament (最終版)</title>
+    <title>大学杯 Inkollege Student Cup</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- フォント: Noto Serif JP (明朝), Noto Sans JP (ゴシック) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-            color: #1e293b; /* slate-800 */
-            background-color: #f8fafc; /* slate-50 */
-            overflow-x: hidden;
-        }
-        h1, h2, h3, h4, .font-serif {
-            font-family: 'Noto Serif JP', serif;
-        }
-        .text-shadow {
-            text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
-        }
-        .gradient-text {
-            background: linear-gradient(90deg, #0284c7, #db2777);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .light-glassmorphism {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        @import url(css/style.css);
+        @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css);
     </style>
 </head>
 <body class="antialiased">
@@ -72,11 +37,11 @@
 
             <div class="relative z-20 container mx-auto px-6">
                 <h2 class="text-5xl md:text-7xl font-serif text-shadow leading-tight">
-                   青春で塗りつぶせ！
+                    青春で塗りつぶせ！
                 </h2>
                 <p class="mt-4 text-lg md:text-xl text-slate-200 font-semibold">- 大学生の頂点決める、イカした大会 -</p>
                 <div class="mt-12">
-                     <a href="#" class="group relative inline-block text-lg">
+                    <a href="#" class="group relative inline-block text-lg">
                         <span class="block px-12 py-4 font-bold text-white bg-slate-800 border-2 border-slate-800 rounded-full transition-colors duration-300 group-hover:bg-transparent group-hover:text-slate-800">エントリーはこちら</span>
                         <span class="absolute inset-0 h-full w-full rounded-full bg-white transform scale-0 group-hover:scale-100 transition-transform duration-300 ease-out -z-10"></span>
                     </a>
@@ -87,7 +52,7 @@
         <div class="py-20 md:py-24">
             <!-- 大学杯とはセクション -->
             <section id="about" class="container mx-auto px-6 reveal">
-                 <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-lg shadow-xl">
+                <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-lg shadow-xl">
                     <h3 class="text-4xl font-serif font-bold text-slate-800 text-center">大学杯とは</h3>
                     <div class="w-20 h-1 bg-slate-800 mt-4 mb-8 mx-auto"></div>
                     <p class="text-slate-700 leading-relaxed text-base text-center">
@@ -143,7 +108,7 @@
                             <h4 class="font-bold text-lg text-slate-800 font-serif truncate">東都イカスクイッド</h4>
                         </div>
                     </div>
-                     <!-- Record Card 2 -->
+                    <!-- Record Card 2 -->
                     <div class="group bg-white rounded-lg shadow-lg overflow-hidden">
                         <img src="https://placehold.co/600x400/4c1d95/ffffff?text=2023" alt="[2023年大会の画像]" class="w-full h-40 object-cover transition-transform duration-500 group-hover:scale-105">
                         <div class="p-4">
@@ -151,7 +116,7 @@
                             <h4 class="font-bold text-lg text-slate-800 font-serif truncate">西京ジェットスイーパーズ</h4>
                         </div>
                     </div>
-                     <!-- Record Card 3 -->
+                    <!-- Record Card 3 -->
                     <div class="group bg-white rounded-lg shadow-lg overflow-hidden">
                         <img src="https://placehold.co/600x400/312e81/ffffff?text=2022" alt="[2022年大会の画像]" class="w-full h-40 object-cover transition-transform duration-500 group-hover:scale-105">
                         <div class="p-4">
@@ -159,7 +124,7 @@
                             <h4 class="font-bold text-lg text-slate-800 font-serif truncate">南山大学ワイパーズ</h4>
                         </div>
                     </div>
-                     <!-- Record Card 4 -->
+                    <!-- Record Card 4 -->
                     <div class="group bg-white rounded-lg shadow-lg overflow-hidden">
                         <img src="https://placehold.co/600x400/831843/ffffff?text=2021" alt="[2021年大会の画像]" class="w-full h-40 object-cover transition-transform duration-500 group-hover:scale-105">
                         <div class="p-4">
@@ -169,9 +134,9 @@
                     </div>
                 </div>
                 <div class="text-center mt-12">
-                     <a href="#" class="font-semibold text-slate-700 hover:text-sky-600 transition-colors">
+                    <a href="#" class="font-semibold text-slate-700 hover:text-sky-600 transition-colors">
                         すべての記録を見る <i class="fas fa-arrow-right ml-1"></i>
-                     </a>
+                    </a>
                 </div>
             </section>
         </div>

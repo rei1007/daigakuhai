@@ -1,0 +1,64 @@
+/*漢字以外　太*/
+@font-face {
+    src: url(../font/BlitzBold.otf) format("opentype");
+    font-family: "Splatoon1";
+}
+
+/*漢字以外　通常*/
+@font-face {
+    src: url(../font/BlitzMain.otf) format("opentype");
+    font-family: "Splatoon2";
+}
+
+/*漢字　太*/
+@font-face {
+    src: url(../font/FOT-RowdyStd-EB.otf) format("opentype");
+    font-family: "FOT-ロウディ Std EB";
+}
+
+/*漢字　通常*/
+@font-face {
+    src: url(../font/FOT-KurokaneStd-EB.otf) format("opentype");
+    font-family: "FOT-くろかね Std EB";
+}
+
+body {
+    font-family: 'FOT-くろかね Std EB';
+    color: #1e293b;
+    /* slate-800 */
+    background-color: #f8fafc;
+    /* slate-50 */
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4,
+.font-serif {
+    font-family: 'Noto Serif JP', serif;
+}
+
+.text-shadow {
+    text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #0284c7, #db2777);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.light-glassmorphism {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
