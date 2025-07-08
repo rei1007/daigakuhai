@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大学杯 - Splatoon Tournament (最終版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- フォント: Noto Serif JP (明朝), Noto Sans JP (ゴシック) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #1e293b; /* slate-800 */
+            background-color: #f8fafc; /* slate-50 */
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .text-shadow {
+            text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #0284c7, #db2777);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .light-glassmorphism {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- ヘッダー -->
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b-2 border-slate-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl md:text-3xl font-serif font-bold text-slate-800">大学杯</h1>
+            <div class="flex space-x-6 items-center">
+                <a href="#" class="text-slate-500 hover:text-slate-800 transition duration-300"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="#" class="text-slate-500 hover:text-slate-800 transition duration-300"><i class="fab fa-youtube fa-lg"></i></a>
+                <a href="#" class="text-slate-500 hover:text-slate-800 transition duration-300"><i class="fab fa-discord fa-lg"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main>
+        <!-- ヒーローセクション -->
+        <section class="relative h-screen min-h-[700px] text-white flex items-center justify-center text-center">
+            <div id="image-slider" class="absolute inset-0 z-0">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent z-10"></div>
+                <img src="https://placehold.co/1800x1200/0c4a6e/ffffff?text=塗りたくーる、テンタクル！" alt="[スプラトゥーンのインクアート画像1]" class="slider-image w-full h-full object-cover absolute transition-opacity duration-1000 ease-in-out opacity-100">
+                <img src="https://placehold.co/1800x1200/be185d/ffffff?text=カモン！" alt="[スプラトゥーンのインクアート画像2]" class="slider-image w-full h-full object-cover absolute transition-opacity duration-1000 ease-in-out opacity-0">
+                <img src="https://placehold.co/1800x1200/0369a1/ffffff?text=ナイス！" alt="[スプラトゥーンのインクアート画像3]" class="slider-image w-full h-full object-cover absolute transition-opacity duration-1000 ease-in-out opacity-0">
+            </div>
+
+            <div class="relative z-20 container mx-auto px-6">
+                <h2 class="text-5xl md:text-7xl font-serif text-shadow leading-tight">
+                   青春で塗りつぶせ！
+                </h2>
+                <p class="mt-4 text-lg md:text-xl text-slate-200 font-semibold">- 大学生の頂点決める、イカした大会 -</p>
+                <div class="mt-12">
+                     <a href="#" class="group relative inline-block text-lg">
+                        <span class="block px-12 py-4 font-bold text-white bg-slate-800 border-2 border-slate-800 rounded-full transition-colors duration-300 group-hover:bg-transparent group-hover:text-slate-800">エントリーはこちら</span>
+                        <span class="absolute inset-0 h-full w-full rounded-full bg-white transform scale-0 group-hover:scale-100 transition-transform duration-300 ease-out -z-10"></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="py-20 md:py-24">
+            <!-- 大学杯とはセクション -->
+            <section id="about" class="container mx-auto px-6 reveal">
+                 <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-lg shadow-xl">
+                    <h3 class="text-4xl font-serif font-bold text-slate-800 text-center">大学杯とは</h3>
+                    <div class="w-20 h-1 bg-slate-800 mt-4 mb-8 mx-auto"></div>
+                    <p class="text-slate-700 leading-relaxed text-base text-center">
+                        大学杯は、全国の大学生たちの頂点を決める、最大規模のスプラトゥーン公式大会である。最強のブキ構成、最高のチームワーク、そして一瞬のひらめき。キャンパスの威信を背負い、インクにまみれてナワバリを奪い合え。勝利の栄冠は、ただ一つのチームにのみ輝く。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 最新の大会セクション -->
+            <section id="latest-tournament" class="mt-20 md:mt-24 container mx-auto px-6 reveal">
+                <h3 class="text-4xl md:text-5xl font-serif font-bold text-slate-800 text-center">最新の大会</h3>
+                <div class="text-center mt-4">
+                    <p class="text-slate-600 font-semibold">開催日時: 2025年8月10日(土) 〜 8月15日(木)</p>
+                    <!-- 大会状況を「エントリー終了」に変更 -->
+                    <span class="inline-block bg-slate-500 text-white text-sm font-bold px-4 py-1 rounded-full mt-4">エントリー終了</span>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+                    <a href="#" class="group block bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-t-4 border-transparent hover:border-sky-500">
+                        <i class="fas fa-book-open text-3xl gradient-text"></i>
+                        <h4 class="font-bold text-xl text-slate-800 mt-4 font-serif">大会概要</h4>
+                        <p class="mt-2 text-sm text-slate-500">ルールやレギュレーション</p>
+                    </a>
+                    <!-- LIVE配信をグレーアウト -->
+                    <div class="group block bg-white p-8 rounded-lg shadow-lg border-t-4 border-transparent grayscale opacity-60 pointer-events-none">
+                        <i class="fas fa-video text-3xl text-slate-400"></i>
+                        <h4 class="font-bold text-xl text-slate-800 mt-4 font-serif">LIVE配信</h4>
+                        <p class="mt-2 text-sm text-slate-500">現在配信はありません</p>
+                    </div>
+                    <!-- エントリーをグレーアウト -->
+                    <div class="group block bg-white p-8 rounded-lg shadow-lg border-t-4 border-transparent grayscale opacity-60 pointer-events-none">
+                        <i class="fas fa-pen-nib text-3xl text-slate-400"></i>
+                        <h4 class="font-bold text-xl text-slate-800 mt-4 font-serif">エントリー</h4>
+                        <p class="mt-2 text-sm text-slate-500">受付は終了しました</p>
+                    </div>
+                    <a href="#" class="group block bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-t-4 border-transparent hover:border-pink-500">
+                        <i class="fas fa-headset text-3xl gradient-text"></i>
+                        <h4 class="font-bold text-xl text-slate-800 mt-4 font-serif">問い合わせ</h4>
+                        <p class="mt-2 text-sm text-slate-500">大会に関するご質問</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- 過去の記録セクション -->
+            <section id="records" class="mt-20 md:mt-24 container mx-auto px-6 reveal">
+                <h3 class="text-4xl md:text-5xl font-serif font-bold text-slate-800 text-center">過去の記録</h3>
+                <div class="w-24 h-1 bg-slate-800 mx-auto mt-4 mb-12"></div>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Record Card 1 -->
+                    <div class="group bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://placehold.co/600x400/1e3a8a/ffffff?text=2024" alt="[2024年大会の画像]" class="w-full h-40 object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="p-4">
+                            <p class="text-sm text-slate-500">2024年</p>
+                            <h4 class="font-bold text-lg text-slate-800 font-serif truncate">東都イカスクイッド</h4>
+                        </div>
+                    </div>
+                     <!-- Record Card 2 -->
+                    <div class="group bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://placehold.co/600x400/4c1d95/ffffff?text=2023" alt="[2023年大会の画像]" class="w-full h-40 object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="p-4">
+                            <p class="text-sm text-slate-500">2023年</p>
+                            <h4 class="font-bold text-lg text-slate-800 font-serif truncate">西京ジェットスイーパーズ</h4>
+                        </div>
+                    </div>
+                     <!-- Record Card 3 -->
+                    <div class="group bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://placehold.co/600x400/312e81/ffffff?text=2022" alt="[2022年大会の画像]" class="w-full h-40 object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="p-4">
+                            <p class="text-sm text-slate-500">2022年</p>
+                            <h4 class="font-bold text-lg text-slate-800 font-serif truncate">南山大学ワイパーズ</h4>
+                        </div>
+                    </div>
+                     <!-- Record Card 4 -->
+                    <div class="group bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://placehold.co/600x400/831843/ffffff?text=2021" alt="[2021年大会の画像]" class="w-full h-40 object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="p-4">
+                            <p class="text-sm text-slate-500">2021年</p>
+                            <h4 class="font-bold text-lg text-slate-800 font-serif truncate">北海シャープマーカーズ</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                     <a href="#" class="font-semibold text-slate-700 hover:text-sky-600 transition-colors">
+                        すべての記録を見る <i class="fas fa-arrow-right ml-1"></i>
+                     </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-slate-800 mt-16">
+        <div class="container mx-auto px-6 py-8 text-center text-sm">
+            <p class="text-slate-400">&copy; 2025 大学杯 実行委員会. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ヒーローセクションの画像スライダー
+        const sliderImages = document.querySelectorAll('#image-slider .slider-image');
+        if (sliderImages.length > 0) {
+            let currentImageIndex = 0;
+            setInterval(() => {
+                sliderImages[currentImageIndex].classList.remove('opacity-100');
+                sliderImages[currentImageIndex].classList.add('opacity-0');
+                currentImageIndex = (currentImageIndex + 1) % sliderImages.length;
+                sliderImages[currentImageIndex].classList.remove('opacity-0');
+                sliderImages[currentImageIndex].classList.add('opacity-100');
+            }, 5000);
+        }
+
+        // スクロール連動アニメーション
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        revealElements.forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+
+</body>
+</html>
