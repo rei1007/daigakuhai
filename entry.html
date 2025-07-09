@@ -21,7 +21,8 @@
         @import url("style/style.css");
         @import url("https://use.fontawesome.com/releases/v6.7.2/css/all.css");
     </style>
-    <script src="script/script.js"></script>
+    <script src="script/script.js" type="module"></script>
+    <script src="script/entry.js" type="module"></script>
 </head>
 <body class="antialiased">
 
@@ -43,9 +44,8 @@
 
     <!-- メインコンテンツ -->
     <main>
-        <div class="main-content-wrapper">
-            <!-- エントリーなしセクション -->
-            <section id="no-entry" class="section container reveal">
+        <div id="entry-page" class="main-content-wrapper">
+            <section class="section container reveal no-entry">
                 <div class="about-section-box">
                     <h3 class="section-title">くコ:彡</h3>
                     <div class="section-divider"></div>
@@ -54,7 +54,8 @@
                     </p>
                 </div>
             </section>
-        </div>
+            
+            </div>
     </main>
 
     <!-- フッター -->

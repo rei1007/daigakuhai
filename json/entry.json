@@ -1,0 +1,17 @@
+
+{
+    "tournaments": [
+        {
+            "title": "第2回 大学杯W",
+            "datetime": "開催日時： 8月2日(土) 21:00",
+            "deadline": "締め切り： 8月2日(土) 20:00",
+            "url": "tournament/ISCW2.html"
+        },
+        {
+            "title": "第3回 大学杯W",
+            "datetime": "開催日時： 8月9日(土) 21:00",
+            "deadline": "締め切り： 8月9日(土) 20:00",
+            "url": "tournament/ISCW3.html"
+        }
+    ]
+}

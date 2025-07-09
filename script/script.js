@@ -129,3 +129,6 @@ const initializeScrollReveal = () => {
         observer.observe(element);
     });
 };
+
+// 他のファイルから使えるように、関数をエクスポート
+export { initializeScrollReveal, applyCustomFonts };
