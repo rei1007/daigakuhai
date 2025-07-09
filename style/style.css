@@ -1,53 +1,41 @@
-/* スプラフォント導入 */
-/* 漢字以外 太 */
+/*
+ * =================================================================
+ * フォント定義
+ * =================================================================
+ */
+
+/* 英数字用フォント（太字） */
 @font-face {
-    src: url(../font/BlitzBold.ttf) format("trueType");
     font-family: "splatoon1";
+    src: url(../font/BlitzBold.ttf) format("trueType");
 }
-/* 漢字以外 通常 */
+
+/* 英数字用フォント（通常） */
 @font-face {
+    font-family: "Splatoon2";
     src: url(../font/BlitzMain.ttf) format("trueType");
-    font-family: "Splatoon2";
 }
-/* 漢字 太 */
+
+/* 日本語用フォント（太字） */
 @font-face {
-    src: url(../font/FOT-RowdyStd-EB.otf) format("opentype");
     font-family: "FOT-Rowdy Std";
+    src: url(../font/FOT-RowdyStd-EB.otf) format("opentype");
 }
-/* 漢字 通常 */
+
+/* 日本語用フォント（通常） */
 @font-face {
+    font-family: "FOT-Kurokane Std";
     src: url(../font/FOT-Kurokane-Std.ttf) format("trueType");
-    font-family: "FOT-Kurokane Std";
 }
 
-/* リセットCSS */
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 
-/* フォント設定 */
-.font-kanji {
-    font-family: "FOT-Kurokane Std";
-    font-weight: 400;
-}
-.font-other {
-    font-family: "Splatoon2";
-    font-weight: 400;
-}
-h1, h2, h3 {
-    .font-kanji {
-        font-family: "FOT-Rowdy Std";
-        font-weight: 400;
-    }
-    .font-other {
-        font-family: "Splatoon1";
-        font-weight: 400;
-    }
-}
+/*
+ * =================================================================
+ * 基本設定
+ * =================================================================
+ */
 
-/* CSS変数 */
+/* --- 色の定義（CSS変数） --- */
 :root {
     --primary-color: #0f2540;
     --secondary-color: #157786;
@@ -56,500 +44,635 @@ h1, h2, h3 {
     --surface-color: #FFFFFF;
 }
 
-/* 各パーツ初期設定 */
+/* --- 基本的なリセット --- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- 基本要素のスタイル --- */
 html {
     scroll-behavior: smooth;
 }
+
 body {
-    color: #1e293b;
     background-color: var(--background-color);
+    color: #1e293b;
     overflow-x: hidden;
 }
+
 a {
-    text-decoration: none;
     color: inherit;
-}
-img {
-    max-width: 100%;
-    display: block;
+    text-decoration: none;
 }
 
-/* コンテナ設定 */
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* --- フォントの適用 --- */
+.font-kanji {
+    font-family: "FOT-Kurokane Std";
+    font-weight: 400;
+}
+
+.font-other {
+    font-family: "Splatoon2";
+    font-weight: 400;
+}
+
+h1,
+h2,
+h3 {
+    & .font-kanji {
+        font-family: "FOT-Rowdy Std";
+        font-weight: 400;
+    }
+
+    & .font-other {
+        font-family: "Splatoon1";
+        font-weight: 400;
+    }
+}
+
+
+/*
+ * =================================================================
+ * レイアウト
+ * =================================================================
+ */
+
+/* --- 中央寄せコンテナ --- */
 .container {
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 640px;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-}
-@media (min-width: 640px) {
-    .container {
-        max-width: 640px;
-    }
-}
-@media (min-width: 768px) {
-    .container {
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (min-width: 768px) {
         max-width: 768px;
     }
-}
-@media (min-width: 1024px) {
-    .container {
+
+    @media (min-width: 1024px) {
         max-width: 1024px;
     }
-}
-@media (min-width: 1280px) {
-    .container {
+
+    @media (min-width: 1280px) {
         max-width: 1280px;
     }
 }
 
-/* ユーティリティ設定 */
+
+/*
+ * =================================================================
+ * 便利なスタイル（ユーティリティ）
+ * =================================================================
+ */
+
 .text-shadow {
     text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.8);
 }
+
 .gradient-text {
     background: linear-gradient(90deg, #0284c7, #db2777);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+/* --- スクロール表示アニメーション --- */
 .reveal {
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
+
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Header */
+
+/*
+ * =================================================================
+ * コンポーネント
+ * =================================================================
+ */
+
+/* --- ヘッダー --- */
 .header {
-    background-color: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1), 0 4px 4px -4px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
     z-index: 50;
+    background-color: rgba(255, 255, 255, 0.6);
     border-bottom: 2px solid var(--secondary-color);
-}
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 1.5rem;
-    padding-bottom: 1rem;
-    max-width: 1600px;
-}
-.header-logo {
-    height: 3.5rem;
-}
-.social-links {
-    display: flex;
-}
-.fab {
-    font-size: 2rem !important;
-}
-.social-links a {
-    margin: 0 1rem;
-    color: var(--support-color);
-    transition: color 0.3s;
-}
-.social-links a:hover {
-    color: var(--secondary-color);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1), 0 4px 4px -4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1600px;
+        padding-top: 1.5rem;
+        padding-bottom: 1rem;
+    }
+
+    .header-logo {
+        height: 3.5rem;
+    }
+
+    .social-links {
+        display: flex;
+
+        .fab {
+            font-size: 2rem !important;
+        }
+
+        a {
+            margin: 0 1rem;
+            color: var(--support-color);
+            transition: color 0.3s;
+
+            &:hover {
+                color: var(--secondary-color);
+            }
+        }
+    }
 }
 
-/* Hero Section */
+/* --- ヒーローセクション --- */
 .hero-section {
     position: relative;
-    height: 100vh;
-    min-height: 400px;
-    max-height: 1200px;
-    color: var(--background-color);
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100vh;
+    min-height: 400px;
+    max-height: 1200px;
     text-align: center;
-}
-.hero-slider {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -10;
-}
-.hero-slider-overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: linear-gradient(to top, rgba(23, 41, 80, 0.8), transparent);
-    z-index: 10;
-}
-.slider-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    transition: opacity 1s ease-in-out;
-}
-.hero-content {
-    position: relative;
-    z-index: 20;
-}
-.hero-title {
-    font-size: 3rem;
-    line-height: 120%;
-    @media (min-width: 680px) {
-        font-size: 4rem !important;
-    }
-    @media (min-width: 800px) {
-        font-size: 6rem !important;
-    }
-}
-.hero-subtitle {
-    margin-top: 1rem;
-    font-size: 1.2rem;
-    line-height: 120%;
     color: var(--background-color);
-    opacity: 0.8;
-    @media (min-width: 680px) {
-        font-size: 1.6rem !important;
+
+    .hero-slider {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -10;
+
+        .slider-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 1s ease-in-out;
+        }
     }
-    @media (min-width: 800px) {
-        font-size: 2rem !important;
+
+    .hero-slider-overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10;
+        background-image: linear-gradient(to top, rgba(23, 41, 80, 0.8), transparent);
     }
-}
-.hero-button-wrapper {
-    margin-top: 3rem;
-}
-.hero-button {
-    position: relative;
-    display: inline-block;
-    font-size: 1.2rem;
-    line-height: 150%;
-    @media (min-width: 680px) {
-        font-size: 1.6rem !important;
+
+    .hero-content {
+        position: relative;
+        z-index: 20;
     }
-}
-.hero-button-text {
-    display: block;
-    padding: 0.5rem 1rem;
-    color: var(--background-color);
-    background-color: var(--secondary-color);
-    border-radius: 9999px;
-    transition: color 0.3s, background-color 0.3s;
-    @media (min-width: 680px) {
-        padding: 0.5rem 2rem;
+
+    .hero-title {
+        font-size: 3rem;
+        line-height: 120%;
+
+        @media (min-width: 680px) {
+            font-size: 4rem !important;
+        }
+
+        @media (min-width: 800px) {
+            font-size: 6rem !important;
+        }
     }
-}
-.hero-button:hover .hero-button-text {
-    background-color: transparent;
-    color: var(--support-color);
-}
-.hero-button-bg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    border-radius: 9999px;
-    background-color: var(--background-color);
-    transform: scale(0);
-    transition: transform 0.3s ease-out;
-    z-index: -10;
-}
-.hero-button:hover .hero-button-bg {
-    transform: scale(1);
+
+    .hero-subtitle {
+        margin-top: 1rem;
+        font-size: 1.2rem;
+        line-height: 120%;
+        color: var(--background-color);
+        opacity: 0.8;
+
+        @media (min-width: 680px) {
+            font-size: 1.6rem !important;
+        }
+
+        @media (min-width: 800px) {
+            font-size: 2rem !important;
+        }
+    }
+
+    .hero-button-wrapper {
+        margin-top: 3rem;
+    }
+
+    .hero-button {
+        position: relative;
+        display: inline-block;
+        font-size: 1.2rem;
+        line-height: 150%;
+
+        @media (min-width: 680px) {
+            font-size: 1.6rem !important;
+        }
+
+        .hero-button-text {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: var(--background-color);
+            background-color: var(--secondary-color);
+            border-radius: 9999px;
+            transition: color 0.3s, background-color 0.3s;
+
+            @media (min-width: 680px) {
+                padding: 0.5rem 2rem;
+            }
+        }
+
+        .hero-button-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -10;
+            width: 100%;
+            height: 100%;
+            background-color: var(--background-color);
+            border-radius: 9999px;
+            transform: scale(0);
+            transition: transform 0.3s ease-out;
+        }
+
+        &:hover .hero-button-text {
+            color: var(--support-color);
+            background-color: transparent;
+        }
+
+        &:hover .hero-button-bg {
+            transform: scale(1);
+        }
+    }
 }
 
-/* Main Content Wrapper */
+/* --- メインコンテンツ --- */
 .main-content-wrapper {
     padding-top: 5rem;
     padding-bottom: 6rem;
+
+    @media (min-width: 768px) {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
 }
 
-/* Section Base */
+/* --- 各セクション共通 --- */
 .section {
     margin-top: 5rem;
-}
-.section-title {
-    font-size: 3rem;
-    line-height: 120%;
-    font-weight: 400;
-    color: var(--primary-color);
-    text-align: center;
-}
-.section-divider {
-    width: 8rem;
-    height: 2px;
-    background-color: var(--primary-color);
-    margin: 1rem auto 2rem auto;
+
+    @media (min-width: 768px) {
+        margin-top: 4rem;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 3rem;
+        font-weight: 400;
+        line-height: 120%;
+        color: var(--primary-color);
+
+        @media (min-width: 768px) {
+            font-size: 3rem;
+            line-height: 120%;
+        }
+    }
+
+    .section-divider {
+        width: 8rem;
+        height: 2px;
+        margin: 1rem auto 2rem auto;
+        background-color: var(--primary-color);
+    }
 }
 
-/* About Section */
+/* --- 大学杯とはセクション --- */
 .about-section-box {
     max-width: 60rem;
     margin-left: auto;
     margin-right: auto;
-    background-color: var(--surface-color);
     padding: 1rem;
+    background-color: var(--surface-color);
     border-radius: 1rem;
     box-shadow: 0 6px 6px -12px rgba(0, 0, 0, 0.1), 0 4px 6px 0 rgba(0, 0, 0, 0.2);
-}
-.about-section-divider {
-    width: 8rem;
-    height: 2px;
-    background-color: var(--primary-color);
-    margin: 1rem auto 2rem auto;
-}
-.about-section-text {
-    color: var(--primary-color);
-    font-size: 1.2rem;
-    line-height: 150%;
-    text-align: center;
-    opacity: 0.8;
-    @media (min-width: 800px) {
-        font-size: 1.5rem;
+
+    @media (min-width: 768px) {
+        padding: 2rem;
+    }
+
+    .about-section-divider {
+        width: 8rem;
+        height: 2px;
+        margin: 1rem auto 2rem auto;
+        background-color: var(--primary-color);
+    }
+
+    .about-section-text {
+        text-align: center;
+        font-size: 1.2rem;
+        line-height: 150%;
+        color: var(--primary-color);
+        opacity: 0.8;
+
+        @media (min-width: 800px) {
+            font-size: 1.5rem;
+        }
     }
 }
 
-/* Latest Tournament Section */
+
+/* --- 最新大会情報セクション --- */
 .latest-tournament-meta {
+    margin-top: 1.5rem;
     text-align: center;
-    margin-top: 1.5rem;
     line-height: 120%;
+
+    .latest-tournament-date {
+        font-size: 2rem;
+        color: var(--secondary-color);
+    }
+
+    .latest-tournament-title {
+        font-size: 2.5rem;
+    }
+
+    .status-badge {
+        display: inline-block;
+        margin-top: 1.5rem;
+        padding: 0.5rem 1.5rem;
+        font-size: 1.2rem;
+        line-height: 150%;
+        color: var(--background-color);
+        border-radius: 9999px;
+
+        &.status-entry-open {
+            background-color: #38b46c;
+        }
+
+        &.status-entry-closed {
+            background-color: #e7c710;
+        }
+
+        &.status-ended {
+            background-color: #64748b;
+        }
+    }
 }
-.latest-tournament-date {
-    color: var(--secondary-color);
-    font-size: 2rem;
-}
-.latest-tournament-title{
-    font-size: 2.5rem;
-}
-.status-badge {
-    display: inline-block;
-    color: var(--background-color);
-    font-size: 1.2rem;
-    line-height: 150%;
-    padding: 0.5rem 1.5rem;
-    border-radius: 9999px;
-    margin-top: 1.5rem;
-}
-.status-entry-open {
-    background-color: #38b46c;
-}
-.status-entry-closed {
-    background-color: #e7c710;
-}
-.status-ended {
-    background-color: #64748b;
-}
+
 .info-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     margin-top: 2rem;
-}
-.info-card {
-    display: block;
-    background-color: var(--surface-color);
-    padding: 1rem;
-    border-radius: 1rem;
-    box-shadow: 0 6px 6px -12px rgba(0, 0, 0, 0.1), 0 4px 6px 0 rgba(0, 0, 0, 0.2);
-    border-top: 4px solid transparent;
-    transition: all 0.3s;
-}
-.info-card:hover {
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-    transform: translateY(-0.5rem);
-}
-.info-card.hover-sky:hover {
-    border-top-color: #0ea5e9;
-}
-.info-card.hover-pink:hover {
-    border-top-color: #ec4899;
-}
-.info-card-icon {
-    font-size: 2rem;
-    line-height: 2.2rem;
-}
-.info-card-title {
-    font-weight: 400;
-    font-size: 1.5rem;
-    line-height: 120%;
-    color: var(--primary-color);
-    margin-top: 1rem;
-}
-.info-card-text {
-    margin-top: 0.5rem;
-    font-size: 1rem;
-    line-height: 120%;
-    color: var(--support-color);
-    @media (min-width: 680px) {
-        font-size: 1.2rem;
+
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(4, 1fr);
     }
-}
-.info-card-disabled {
-    filter: grayscale(1);
-    opacity: 0.6;
-    pointer-events: none;
-}
-.info-card-disabled .info-card-icon {
-    color: #94a3b8;
-}
-.next-tournament {
-    display: block;
-    background-color: var(--surface-color);
-    max-width: 600px;
-    padding: 1rem;
-    margin: 2rem auto 0;
-    border-radius: 1rem;
-    box-shadow: 0 6px 6px -12px rgba(0, 0, 0, 0.1), 0 4px 6px 0 rgba(0, 0, 0, 0.2);
-    border-top: 4px solid transparent;
-    transition: all 0.3s;
-    position: relative;
-}
-.next-tournament:hover {
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-    transform: translateY(-0.5rem);
-    border-top-color: #b333c4;
-}
-.next-tournament-title {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    line-height: 120%;
-}
-.next-tournament-date {
-    font-size: 1rem;
-    line-height: 120%;
-    margin-top: 0.2rem;
-    color: var(--support-color);
-    @media (min-width: 680px) {
-        font-size: 1.2rem;
-    }
-}
-.next-status-badge {
-    color: var(--background-color);
-    width: fit-content;
-    padding: 0 0.5rem;
-    border-radius: 1rem 0 1rem 0;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    @media (min-width: 680px) {
-        padding: 0.2rem 1rem;
-        border-radius: 0.5rem;
-        bottom: 0.5rem;
-        right: 0.5rem;
+
+    .info-card {
+        display: block;
+        padding: 1rem;
+        background-color: var(--surface-color);
+        border-radius: 1rem;
+        border-top: 4px solid transparent;
+        box-shadow: 0 6px 6px -12px rgba(0, 0, 0, 0.1), 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+        transition: all 0.3s;
+
+        @media (min-width: 768px) {
+            padding: 2rem;
+        }
+
+        &:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        &.hover-sky:hover {
+            border-top-color: #0ea5e9;
+        }
+
+        &.hover-pink:hover {
+            border-top-color: #ec4899;
+        }
+
+        .info-card-icon {
+            font-size: 2rem;
+            line-height: 2.2rem;
+        }
+
+        .info-card-title {
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 120%;
+            color: var(--primary-color);
+        }
+
+        .info-card-text {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            line-height: 120%;
+            color: var(--support-color);
+
+            @media (min-width: 680px) {
+                font-size: 1.2rem;
+            }
+        }
+
+        &.info-card-disabled {
+            pointer-events: none;
+            opacity: 0.6;
+            filter: grayscale(1);
+
+            .info-card-icon {
+                color: #94a3b8;
+            }
+        }
     }
 }
 
-/* Records Section */
+.next-tournament {
+    position: relative;
+    display: block;
+    max-width: 600px;
+    margin: 2rem auto 0;
+    padding: 1rem;
+    background-color: var(--surface-color);
+    border-radius: 1rem;
+    border-top: 4px solid transparent;
+    box-shadow: 0 6px 6px -12px rgba(0, 0, 0, 0.1), 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+
+    @media (min-width: 768px) {
+        padding: 1rem 2rem;
+    }
+
+    &:hover {
+        transform: translateY(-0.5rem);
+        border-top-color: #b333c4;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    }
+
+    .next-tournament-title {
+        font-size: 1.5rem;
+        line-height: 120%;
+        color: var(--primary-color);
+    }
+
+    .next-tournament-date {
+        margin-top: 0.2rem;
+        font-size: 1rem;
+        line-height: 120%;
+        color: var(--support-color);
+
+        @media (min-width: 680px) {
+            font-size: 1.2rem;
+        }
+    }
+
+    .next-status-badge {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: fit-content;
+        padding: 0 0.5rem;
+        color: var(--background-color);
+        border-radius: 1rem 0 1rem 0;
+
+        @media (min-width: 680px) {
+            right: 0.5rem;
+            bottom: 0.5rem;
+            padding: 0.2rem 1rem;
+            border-radius: 0.5rem;
+        }
+    }
+}
+
+/* --- 大会結果セクション --- */
 .records-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .record-card {
+        background-color: var(--surface-color);
+        border-radius: 0.5rem;
+        box-shadow: 0 6px 6px -12px rgba(0, 0, 0, 0.1), 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+
+        .record-card-image {
+            width: 100%;
+            height: 10rem;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        &:hover .record-card-image {
+            transform: scale(1.1);
+        }
+
+        .record-card-content {
+            padding: 1rem;
+        }
+
+        .record-card-date {
+            font-size: 1rem;
+            line-height: 120%;
+            color: var(--support-color);
+        }
+
+        .record-title {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            line-height: 120%;
+            color: var(--primary-color);
+
+            @media (min-width: 800px) {
+                font-size: 1.2rem;
+            }
+        }
+
+        .record-card-team {
+            margin-top: 0.2rem;
+            font-size: 1rem;
+            line-height: 120%;
+            color: var(--secondary-color);
+            overflow: hidden;
+
+            @media (min-width: 800px) {
+                font-size: 1.2rem;
+            }
+        }
+    }
 }
-.record-card {
-    background-color: var(--surface-color);
-    border-radius: 0.5rem;
-    box-shadow: 0 6px 6px -12px rgba(0, 0, 0, 0.1), 0 4px 6px 0 rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-}
-.record-card-image {
-    width: 100%;
-    height: 10rem;
-    object-fit: cover;
-    transition: transform 0.5s;
-}
-.record-card:hover .record-card-image {
-    transform: scale(1.1);
-}
-.record-card-content {
-    padding: 1rem;
-}
-.record-card-date {
-    font-size: 1rem;
-    line-height: 120%;
-    color: var(--support-color);
-}
-.record-title {
-    font-size: 1.2rem;
-    line-height: 120%;
-    color: var(--primary-color);
-    margin-top: 0.5rem;
-}
-.record-card-team {
-    font-size: 1.2rem;
-    line-height: 120%;
-    color: var(--secondary-color);
-    margin-top: 0.2rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
+
 /*
 .records-link-wrapper {
-    text-align: center;
     margin-top: 3rem;
+    text-align: center;
 }
 .records-link {
     font-weight: 400;
     color: #334155;
     transition: color 0.3s;
-}
-.records-link:hover {
-    color: #0284c7;
+    &:hover {
+        color: #0284c7;
+    }
 }
 */
 
-/* Footer */
-.footer {
-    background-color: var(--primary-color);
-    margin-top: 4rem;
+/* -- 利用規約セクション --*/
+.policy {
+    padding-top: 2rem;
+    color: var(--secondary-color) !important;
 }
-.footer-container {
-    padding: 2rem;
-    text-align: center;
-    font-size: 1.2rem;
-    line-height: 200%;
-}
-.footer-text {
-    color: var(--support-color);
+.policy-sub-section {
+    padding-top: 1rem;
 }
 
-/* Responsive Styles */
-@media (min-width: 768px) {
-    .main-content-wrapper {
-        padding-top: 6rem;
-        padding-bottom: 6rem;
-    }
-    .section {
-        margin-top: 4rem;
-    }
-    .section-title {
-        font-size: 3rem;
-        line-height: 120%;
-    }
-    .about-section-box {
+/* --- フッター --- */
+.footer {
+    margin-top: 4rem;
+    background-color: var(--primary-color);
+
+    .footer-container {
         padding: 2rem;
+        text-align: center;
+        font-size: 1.2rem;
+        line-height: 200%;
     }
-    .info-card {
-        padding: 2rem;
-    }
-    .next-tournament {
-        padding: 1rem 2rem;
-    }
-}
-@media (min-width: 1024px) {
-    .info-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    .records-grid {
-        grid-template-columns: repeat(4, 1fr);
+
+    .footer-text {
+        color: var(--support-color);
     }
 }
