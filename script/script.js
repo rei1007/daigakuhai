@@ -5,7 +5,7 @@
  * =================================================================
  */
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. ページ全体にカスタムフォントを適用する関数を実行
+    // 1. ページ全体にカスタムフォントを適用
     applyCustomFonts(document.body);
 
     // 2. ヒーローセクションの画像スライダーを初期化
@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. スクロールに応じた表示アニメーションを初期化
     initializeScrollReveal();
 });
-
 
 /**
  * =================================================================
@@ -79,7 +78,7 @@ const applyCustomFonts = (element) => {
  * =================================================================
  */
 const initializeHeroSlider = () => {
-    const sliderImages = document.querySelectorAll('.hero__slider-image');
+    const sliderImages = document.querySelectorAll('.slider-image');
     if (sliderImages.length === 0) return; // 対象画像がなければ何もしない
 
     let currentImageIndex = 0;
@@ -88,10 +87,10 @@ const initializeHeroSlider = () => {
     setInterval(() => {
         // 現在の画像を非表示にする
         sliderImages[currentImageIndex].style.opacity = 0;
-        
+
         // 次の画像のインデックスを計算 (配列の最後に到達したら最初に戻る)
         currentImageIndex = (currentImageIndex + 1) % sliderImages.length;
-        
+
         // 次の画像を表示する
         sliderImages[currentImageIndex].style.opacity = 1;
     }, slideInterval);
@@ -115,14 +114,14 @@ const initializeScrollReveal = () => {
             if (entry.isIntersecting) {
                 // 'visible'クラスを追加して、CSSで定義された表示アニメーションを開始
                 entry.target.classList.add('visible');
-                
+
                 // 一度表示された要素は、もう監視する必要がないため監視を停止（パフォーマンス向上）
                 observer.unobserve(entry.target);
             }
         });
     }, {
         // threshold: 0.1 は、要素が10%以上画面内に入った時にコールバックを実行するという意味
-        threshold: 0.1 
+        threshold: 0.1
     });
 
     // すべての.reveal要素を監視対象として登録
