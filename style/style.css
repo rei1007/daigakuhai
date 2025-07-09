@@ -436,12 +436,15 @@ img {
     color: var(--background-color);
     width: fit-content;
     padding: 0 0.5rem;
-    border-radius: 0.5rem;
+    border-radius: 1rem 0 1rem 0;
     position: absolute;
-    bottom: 0.5rem;
-    right: 0.5rem;
+    bottom: 0;
+    right: 0;
     @media (min-width: 680px) {
         padding: 0.2rem 1rem;
+        border-radius: 0.5rem;
+        bottom: 0.5rem;
+        right: 0.5rem;
     }
 }
 
