@@ -559,6 +559,18 @@ h3 {
         color: var(--background-color);
         border-radius: 1rem 0 1rem 0;
 
+        &.status-entry-open {
+            background-color: #38b46c;
+        }
+
+        &.status-entry-closed {
+            background-color: #e7c710;
+        }
+
+        &.status-ended {
+            background-color: #64748b;
+        }
+
         @media (min-width: 680px) {
             right: 0.5rem;
             bottom: 0.5rem;
@@ -651,9 +663,14 @@ h3 {
     padding-top: 2rem;
     color: var(--secondary-color) !important;
 }
-
 .policy-sub-section {
     padding-top: 1rem;
+}
+
+/* -- エントリーなしセクション --*/
+#no-entry {
+    height: calc(100vh - 22rem);
+    min-height: 300px;
 }
 
 /* --- フッター --- */
