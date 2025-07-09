@@ -663,8 +663,48 @@ h3 {
     padding-top: 2rem;
     color: var(--secondary-color) !important;
 }
+
 .policy-sub-section {
     padding-top: 1rem;
+}
+
+.details-box {
+    max-width: 80rem;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: var(--surface-color);
+    border-radius: 1rem;
+    box-shadow: 0 6px 6px -12px rgba(0, 0, 0, 0.1), 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.details-box-title {
+    font-size: 2.5rem;
+    line-height: 120%;
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.rule-subtitle {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--secondary-color);
+    padding-left: 0.75rem;
+}
+
+.rule-description {
+    font-size: 1.2rem;
+    line-height: 150%;
+    color: var(--primary-color);
+    opacity: 0.8;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+
+    @media (min-width: 800px) {
+        font-size: 1.5rem;
+    }
 }
 
 /* -- エントリーなしセクション --*/
