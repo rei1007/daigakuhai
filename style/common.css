@@ -1,0 +1,241 @@
+/*
+* =================================================================
+* フォント定義
+* =================================================================
+*/
+/* 英数字かな用フォント（太字） */
+@font-face {
+    font-family: "splatoon1";
+    src: url(../font/BlitzBold.ttf) format("trueType");
+}
+/* 英数字かな用フォント（通常） */
+@font-face {
+    font-family: "Splatoon2";
+    src: url(../font/BlitzMain.ttf) format("trueType");
+}
+/* 漢字用フォント（太字） */
+@font-face {
+    font-family: "FOT-Rowdy Std";
+    src: url(../font/FOT-RowdyStd-EB.otf) format("opentype");
+}
+/* 漢字用フォント（通常） */
+@font-face {
+    font-family: "FOT-Kurokane Std";
+    src: url(../font/FOT-Kurokane-Std.ttf) format("trueType");
+}
+
+/*
+* =================================================================
+* 基本設定
+* =================================================================
+*/
+/* リセット */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* カラー定義 */
+:root {
+    --base-color: #0f2540;
+    --primary-color: #157786;
+    --secondary-color: #77969A;
+    --background-color: #F8FAFC;
+    --surface-color: #FFFFFF;
+}
+/* フォント定義 */
+html {
+    font-size: 8px;
+    color: var(--base-color);
+}
+.font-kanji {
+    font-family: "FOT-Kurokane Std";
+    font-weight: 400;
+}
+.font-other {
+    font-family: "Splatoon2";
+    font-weight: 400;
+}
+h1, h2, h3 {
+    .font-kanji {
+        font-family: "FOT-Rowdy Std";
+        font-weight: 400;
+    }
+    .font-other {
+        font-family: "Splatoon1";
+        font-weight: 400;
+    }
+}
+/* 基本状態定義 */
+html {
+    scroll-behavior: smooth;
+}
+body {
+    overflow-x: hidden;
+    color: var(--base-color);
+    background-color: var(--background-color);
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/*
+* =================================================================
+* パーツ
+* =================================================================
+*/
+/* 中央寄せコンテナ */
+.container {
+    width: 100%;
+    max-width: 90%;
+    padding: 1rem;
+    margin: 0 auto;
+    @media (min-width: calc(1200px / 0.9)) {
+        max-width: 1200px;
+    }
+}
+/* クロール表示アニメーション */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    .visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* テキストシャドー */
+.text-shadow {
+    text-shadow: 0px 0.5px 1rem rgba(0, 0, 0, 0.8);
+}
+/* プライマリボタン */
+.primary-button {
+    position: relative;
+    display: inline-block;
+    .primary-button-text {
+        font-size: 3rem;
+        line-height: 200%;
+        display: block;
+        padding: 0 3rem;
+        color: var(--background-color);
+        background: linear-gradient(120deg, #3294e4 0%, #23d0d6 50%, #154f86 100%);
+        background-size: 200% 100%;
+        border: none;
+        border-radius: 9999px;
+        cursor: pointer;
+        transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+    }
+    .primary-button-text:hover {
+        background-position: 100% 0;
+    }
+}
+
+/*
+* =================================================================
+* セクション
+* =================================================================
+*/
+/* ヘッダー */
+#header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-bottom: 0.2rem solid var(--primary-color);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    #header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2rem 0;
+    }
+    #header-logo {
+        height: 8rem;
+    }
+    #header-social-links {
+        display: flex;
+        a {
+            margin: 0 1rem;
+        }
+        .fab {
+            font-size: 5rem;
+            color: var(--secondary-color);
+            transition: color 0.5s;
+        }
+        a:hover .fab {
+            color: var(--primary-color);
+        }
+    }
+}
+
+/* ヒーローエリア */
+#hero-area {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    min-height: 400px;
+    max-height: 1000px;
+    text-align: center;
+    color: var(--background-color);
+    #hero-slider {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -10;
+    }
+    #hero-slider-overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10;
+        background-image: linear-gradient(to top, var(--base-color), transparent);
+        opacity: 0.8;
+    }
+    .slider-image {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 1s ease-in-out;
+    }
+    #hero-content {
+        position: relative;
+        z-index: 20;
+    }
+    #hero-title {
+        font-size: 6rem;
+        line-height: 150%;
+        @media (min-width: 680px) {
+            font-size: 8rem;
+        }
+        @media (min-width: 1000px) {
+            font-size: 13rem;
+        }
+    }
+    #hero-subtitle {
+        font-size: 3rem;
+        line-height: 150%;
+        opacity: 0.8;
+        @media (min-width: 680px) {
+            font-size: 4rem;
+        }
+        @media (min-width: 1000px) {
+            font-size: 5rem;
+        }
+    }
+    #hero-button {
+        margin-top: 3rem;
+    }
+}

@@ -711,20 +711,25 @@ h3 {
 #entry-page {
     min-height: calc(100vh - 12rem);
 }
+
 .tournament-title {
     @media (max-width: 600px) {
         font-size: 2rem !important;
     }
 }
-.tournament-date, .entry-date {
+
+.tournament-date,
+.entry-date {
     text-align: center;
     font-size: 1.5rem;
     line-height: 150%;
     margin-bottom: 1rem;
 }
-.entry-date{
+
+.entry-date {
     color: var(--secondary-color);
 }
+
 .entry-button {
     text-align: center;
     width: calc(100% - 4rem);
@@ -738,10 +743,12 @@ h3 {
     border-radius: 9999px;
     transition: background-color 0.3s, color 0.3s;
     border: 2px solid var(--secondary-color);
+
     @media (min-width: 600px) {
         width: calc(100% - 16rem);
         margin: 0 8rem;
     }
+
     @media (min-width: 800px) {
         width: calc(100% - 24rem);
         margin: 0 12rem;
