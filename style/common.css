@@ -180,7 +180,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100dvh;
+    height: calc(100vh - 12rem);
     min-height: 400px;
     max-height: 1000px;
     text-align: center;
